@@ -1,30 +1,53 @@
-import { ReactNode } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import NavBar from "src/Layout/components/NavBar";
-import GithubAccountResultCard from "src/Layout/components/GithubAccountResultCard";
-import Searcher from "src/Layout/components/Searcher";
-import Footer from "src/Layout/components/Footer";
+import React, { ReactNode, useCallback } from "react";
+import { getConfig } from "src/common/helpers";
+import { navigate } from "src/common/history";
+import { debounce } from "lodash";
 
-const Layout = () => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+const Layout = ({ children }: LayoutProps) => {
+  const config = getConfig();
+
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    navigate(`/user?name=${event.target.value}`);
+
+  const debounceOnChange = useCallback(
+    debounce((event: React.ChangeEvent<HTMLInputElement>) => {
+      handleOnChange(event);
+    }, 500),
+    [handleOnChange]
+  );
+
   return (
     <div className="d-flex flex-column min-vh-100">
-      <NavBar />
+      <nav className="navbar w-100 pt-5 d-flex justify-content-center">
+        <div className="logo" />
+      </nav>
       <div
         className="container flex-grow-1"
         style={{
           maxWidth: "800px",
         }}
       >
-        <Searcher />
-        <GithubAccountResultCard
-          login="jakubjereczek"
-          avatarUrl="https://avatars.githubusercontent.com/u/58139870?s=400&v=4"
-          accountUrl="github.com/jakubjereczek"
-          name="Jakub Jereczek"
-          bio="Computer Science and Econometrics student at University of Gdańsk."
-        />
+        <form className="py-5">
+          <div className="form-group">
+            <label htmlFor="searchInput">Github user account name</label>
+            <input
+              type="text"
+              className="form-control"
+              id="searchInput"
+              placeholder="Enter the user account name"
+              onChange={debounceOnChange}
+            ></input>
+          </div>
+        </form>
+        {children}
       </div>
-      <Footer />
+      <footer className="bg-light text-dark text-center p-1">
+        created by <a href={config.AUTHOR_GITHUB_ACCOUNT}>jakubjereczek</a>
+      </footer>
     </div>
   );
 };

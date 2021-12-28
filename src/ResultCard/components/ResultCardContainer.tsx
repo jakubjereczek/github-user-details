@@ -1,29 +1,23 @@
-interface GithubAccountResultCardProps {
-  login: string;
-  avatarUrl: string;
-  accountUrl: string;
-  name: string;
-  bio: string;
-  publicRepos?: number;
-  publicGists?: number;
-}
+import { User } from "src/common/types";
 
-const GithubAccountResultCard = ({
+type UserCardProps = Partial<User>;
+
+const ResultCardContainer = ({
   login,
-  avatarUrl,
-  accountUrl,
+  avatar_url,
+  html_url,
   name,
   bio,
-  publicRepos,
-  publicGists,
-}: GithubAccountResultCardProps) => {
+  public_repos,
+  public_gists,
+}: UserCardProps) => {
   const handleOnClick = () => {
-    window.open(accountUrl);
+    window.open(html_url);
   };
 
   return (
     <div className="col d-flex justify-content-center text-dark">
-      <div className="card mb-4 w-100 ResultCard">
+      <div className="card mb-4 w-100">
         <div className="card-header d-flex justify-content-between align-items-center">
           <span>user github profile details</span>
           <span className="fw-bold">{login}</span>
@@ -33,7 +27,7 @@ const GithubAccountResultCard = ({
             <div
               className="iconImage"
               style={{
-                backgroundImage: `url('${avatarUrl}')`,
+                backgroundImage: `url('${avatar_url}')`,
               }}
             ></div>
             <b className="h5 ms-2 mb-0">{login}</b>
@@ -51,4 +45,4 @@ const GithubAccountResultCard = ({
   );
 };
 
-export default GithubAccountResultCard;
+export default ResultCardContainer;
