@@ -1,73 +1,30 @@
 import { RouteComponentProps } from "@reach/router";
-import qs from "qs";
-import { FC, useEffect } from "react";
-import { useState } from "react";
-import { history } from "src/common/history";
-import { User } from "src/common/types";
-import ErrorMessage from "./components/ErrorMessage";
-import LoadingIndicator from "./components/LoadingIndicator";
+import useFetchGithubProfile, {
+  FetchStatus,
+} from "src/common/hooks/useFetchGithubProfile";
 import ResultCardContainer from "./components/ResultCardContainer";
-import { fetchUser } from "./ResultCard.api";
-
-enum ResultCardState {
-  Idle = "idle",
-  Loading = "loading",
-  Succeeded = "succeeded",
-  Failed = "failed",
-}
+import ResultCardLoadingIndicator from "./components/ResultCardLoadingIndicator";
 
 interface ResultCardProps extends RouteComponentProps {
   userName?: string;
 }
 
-const ResultCard: FC<ResultCardProps> = ({}) => {
-  const [resultCardState, setResultCardState] = useState<ResultCardState>(
-    ResultCardState.Idle
-  );
-  const [user, setUser] = useState<User | null>(null);
-  const [userName, setUserName] = useState<string | null>(null);
+const ResultCard = ({ userName }: ResultCardProps) => {
+  const {
+    results: { user, repos },
+    fetchState,
+    error,
+  } = useFetchGithubProfile(userName!);
 
-  history.listen(() => {
-    const { name } = qs.parse(history.location.search, {
-      ignoreQueryPrefix: true,
-    });
-    setUserName(`${name}`);
-  });
-
-  useEffect(() => {
-    const loadUser = async () => {
-      setResultCardState(ResultCardState.Loading);
-      if (!userName) {
-        setResultCardState(ResultCardState.Idle);
-        return;
-      }
-      fetchUser(userName)
-        .then((user) => {
-          setUser(user);
-          setResultCardState(ResultCardState.Succeeded);
-        })
-        .catch(() => {
-          setResultCardState(ResultCardState.Failed);
-        });
-    };
-
-    loadUser();
-  }, [userName]);
-
-  switch (resultCardState) {
-    case ResultCardState.Idle: {
-      return null;
-    }
-    case ResultCardState.Loading: {
-      return <LoadingIndicator />;
-    }
-    case ResultCardState.Failed: {
-      return <ErrorMessage />;
-    }
-    case ResultCardState.Succeeded: {
-      return <ResultCardContainer {...user} />;
-    }
+  if (!user || fetchState === FetchStatus.Idle) {
+    return null;
   }
+
+  if ([FetchStatus.Loading, FetchStatus.Failed].includes(fetchState)) {
+    return <ResultCardLoadingIndicator type={fetchState} error={error} />;
+  }
+
+  return <ResultCardContainer user={user} repos={repos} />;
 };
 
 export default ResultCard;

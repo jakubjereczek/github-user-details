@@ -1,12 +1,14 @@
 import Api from "src/api/Api";
-import { User } from "src/common/types";
+import { User, Repository } from "src/common/types";
 
 const fetchUser = async (userName: string) => {
   const { data } = await Api.get<User>(`/users/${userName}`);
-
-  console.log(data);
-
   return data;
 };
 
-export { fetchUser };
+const fetchRepos = async (userName: string) => {
+  const { data } = await Api.get<Repository[]>(`/users/${userName}/repos`);
+  return data;
+};
+
+export { fetchUser, fetchRepos };

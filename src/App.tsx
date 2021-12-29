@@ -14,7 +14,7 @@ const App = () => {
     <Layout>
       <LocationProvider history={history}>
         <Router>
-          <ResultCard path="/user" />
+          <ResultCard path="/user/:userName" />
         </Router>
       </LocationProvider>
     </Layout>

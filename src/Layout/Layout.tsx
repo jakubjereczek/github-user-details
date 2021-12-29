@@ -1,7 +1,6 @@
-import React, { ReactNode, useCallback } from "react";
+import { ReactNode } from "react";
 import { getConfig } from "src/common/helpers";
-import { navigate } from "src/common/history";
-import { debounce } from "lodash";
+import SearchBar from "./components/SearchBar";
 
 interface LayoutProps {
   children: ReactNode;
@@ -9,16 +8,6 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   const config = getConfig();
-
-  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    navigate(`/user?name=${event.target.value}`);
-
-  const debounceOnChange = useCallback(
-    debounce((event: React.ChangeEvent<HTMLInputElement>) => {
-      handleOnChange(event);
-    }, 500),
-    [handleOnChange]
-  );
 
   return (
     <div className="d-flex flex-column min-vh-100">
@@ -28,25 +17,14 @@ const Layout = ({ children }: LayoutProps) => {
       <div
         className="container flex-grow-1"
         style={{
-          maxWidth: "800px",
+          maxWidth: "900px",
         }}
       >
-        <form className="py-5">
-          <div className="form-group">
-            <label htmlFor="searchInput">Github user account name</label>
-            <input
-              type="text"
-              className="form-control"
-              id="searchInput"
-              placeholder="Enter the user account name"
-              onChange={debounceOnChange}
-            ></input>
-          </div>
-        </form>
+        <SearchBar />
         {children}
       </div>
       <footer className="bg-light text-dark text-center p-1">
-        created by <a href={config.AUTHOR_GITHUB_ACCOUNT}>jakubjereczek</a>
+        created by <a href={config.AUTHOR_GITHUB}>jakubjereczek</a>
       </footer>
     </div>
   );
