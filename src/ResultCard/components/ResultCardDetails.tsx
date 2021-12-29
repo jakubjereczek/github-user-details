@@ -1,9 +1,43 @@
-import { sortRepositoriesByCreatedAt } from "../ResultCard.utils";
+import {
+  getUserPropertyIcon,
+  sortRepositoriesByCreatedAt,
+} from "../ResultCard.utils";
 import { UserCardProps } from "./ResultCardContainer";
+import { User } from "src/common/types";
+
+export type DescriptionKeysList = keyof Pick<
+  User,
+  "name" | "blog" | "bio" | "company" | "location"
+>;
+
+interface DescriptionKey {
+  key: DescriptionKeysList;
+  value: string;
+}
 
 const ResultCardDetails = ({ user, repos }: UserCardProps) => {
-  const { name, blog, bio } = user;
+  const { name, blog, bio, company, location } = user;
+  const descriptionKeys: DescriptionKey[] = [
+    { key: "name", value: name },
+    { key: "blog", value: blog },
+    { key: "bio", value: bio },
+    { key: "company", value: company },
+    { key: "location", value: location },
+  ];
+
   const sortedRepos = sortRepositoriesByCreatedAt(repos);
+
+  const DescriptionItems = descriptionKeys.map((value) => {
+    const { value: descriptionValue, key } = value;
+    return (
+      descriptionValue && (
+        <div className="d-flex align-items-center py-1">
+          <span>{getUserPropertyIcon(key)}</span>
+          <span className="px-2">{descriptionValue}</span>
+        </div>
+      )
+    );
+  });
 
   const RepositoryItems = sortedRepos.map((repo) => {
     return (
@@ -26,19 +60,13 @@ const ResultCardDetails = ({ user, repos }: UserCardProps) => {
   return (
     <>
       <h4 className="card-title weight-400">{name}</h4>
-      {blog && <h6>{blog}</h6>}
-      {bio && (
-        <div>
-          <h2>About</h2>
-          <p>{bio}</p>
+      {DescriptionItems}
+      {RepositoryItems.length > 0 ? (
+        <div className="py-2">
+          <h3>Projects</h3>
+          {RepositoryItems}
         </div>
-      )}
-      {repos.length > 0 && (
-        <div>
-          <h2>Projects</h2>
-          <div className="list-group">{RepositoryItems}</div>
-        </div>
-      )}
+      ) : null}
     </>
   );
 };

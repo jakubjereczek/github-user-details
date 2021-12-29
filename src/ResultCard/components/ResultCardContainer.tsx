@@ -30,7 +30,7 @@ const ResultCardContainer = ({ user, repos }: UserCardProps) => {
           <span>user profile details</span>
           <span className="fw-bold">{login}</span>
         </div>
-        <div className="bg-light p-4 d-flex justify-content-between align-items-center">
+        <div className="bg-light p-4 d-flex justify-content-between align-items-start">
           <div className="d-flex justify-content-between align-items-center">
             <div
               className="iconImage"
@@ -45,7 +45,7 @@ const ResultCardContainer = ({ user, repos }: UserCardProps) => {
             </div>
           </div>
           <button className="button btn-dark" onClick={handleOnClick}>
-            github account
+            SHOW ACCOUNT
           </button>
         </div>
         <div className="card-body">
