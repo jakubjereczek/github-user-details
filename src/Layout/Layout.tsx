@@ -14,7 +14,6 @@ const Layout = ({ children }: LayoutProps) => {
 
   return (
     <>
-      <LanguageSwitch />
       <div className="d-flex flex-column min-vh-100">
         <nav className="navbar w-100 pt-5 d-flex justify-content-center">
           <div className="logo" />
@@ -25,6 +24,7 @@ const Layout = ({ children }: LayoutProps) => {
             maxWidth: "900px",
           }}
         >
+          <LanguageSwitch />
           <SearchBar />
           {children}
         </div>

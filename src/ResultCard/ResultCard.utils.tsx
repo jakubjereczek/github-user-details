@@ -7,6 +7,7 @@ import {
   FaRegStar,
 } from "react-icons/fa";
 import { DescriptionKeysList } from "./components/ResultCardDetails";
+import { asDate } from "src/common/helpers";
 
 export const sortRepositoriesByCreatedAt = (repos: Repository[]) => {
   const sortedRepos: Repository[] = repos.sort(
@@ -15,8 +16,6 @@ export const sortRepositoriesByCreatedAt = (repos: Repository[]) => {
   );
   return sortedRepos;
 };
-
-const asDate = (dateString: string) => new Date(dateString);
 
 export const getUserPropertyIcon = (key: DescriptionKeysList): JSX.Element => {
   switch (key) {

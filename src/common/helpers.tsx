@@ -19,3 +19,5 @@ export const showTranslation = (key: TranslationKeys, obj?: {}) => {
 
   return t(key, obj);
 };
+
+export const asDate = (dateString: string) => new Date(dateString);

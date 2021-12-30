@@ -16,16 +16,7 @@ const LanguageSwitch = () => {
     );
   });
 
-  return (
-    <div
-      className="position-absolute"
-      style={{
-        zIndex: 1,
-      }}
-    >
-      <div className="row">{LanguageItems}</div>
-    </div>
-  );
+  return <div className="d-flex justify-content-end">{LanguageItems}</div>;
 };
 
 export default LanguageSwitch;

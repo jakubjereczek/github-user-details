@@ -1,6 +1,8 @@
 import React, { useCallback } from "react";
 import { navigate } from "src/common/history";
 import { debounce } from "lodash";
+import { showTranslation } from "src/common/helpers";
+import { TranslationKeys } from "src/i18n";
 
 const SearchBar = () => {
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) =>
@@ -14,14 +16,18 @@ const SearchBar = () => {
   );
 
   return (
-    <form className="py-5">
+    <form className="py-4">
       <div className="form-group">
-        <label htmlFor="searchInput">Github user account name</label>
+        <label htmlFor="searchInput">
+          {showTranslation(TranslationKeys.LayoutSearchBarSearchInputLabel)}
+        </label>
         <input
           type="text"
           className="form-control"
           id="searchInput"
-          placeholder="Enter the user account name"
+          placeholder={showTranslation(
+            TranslationKeys.LayoutSearchBarSearchInputPlaceholder
+          )}
           onChange={debounceOnChange}
         ></input>
       </div>

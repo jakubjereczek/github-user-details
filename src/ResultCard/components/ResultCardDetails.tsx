@@ -4,7 +4,7 @@ import {
 } from "../ResultCard.utils";
 import { UserCardProps } from "./ResultCardContainer";
 import { User } from "src/common/types";
-import { showTranslation } from "src/common/helpers";
+import { asDate, showTranslation } from "src/common/helpers";
 import { TranslationKeys } from "src/i18n";
 
 export type DescriptionKeysList = keyof Pick<
@@ -50,7 +50,7 @@ const ResultCardDetails = ({ user, repos }: UserCardProps) => {
         >
           <div className="d-flex w-100 justify-content-between">
             <h5 className="mb-1">{repo.name}</h5>
-            <small>{new Date(repo.created_at).toLocaleString()}</small>
+            <small>{asDate(repo.created_at).toLocaleString()}</small>
           </div>
           <p className="mb-1">{repo.description}</p>
           {repo.language && (
