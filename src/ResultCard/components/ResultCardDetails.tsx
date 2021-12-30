@@ -4,6 +4,8 @@ import {
 } from "../ResultCard.utils";
 import { UserCardProps } from "./ResultCardContainer";
 import { User } from "src/common/types";
+import { showTranslation } from "src/common/helpers";
+import { TranslationKeys } from "src/i18n";
 
 export type DescriptionKeysList = keyof Pick<
   User,
@@ -51,7 +53,9 @@ const ResultCardDetails = ({ user, repos }: UserCardProps) => {
             <small>{new Date(repo.created_at).toLocaleString()}</small>
           </div>
           <p className="mb-1">{repo.description}</p>
-          <small>{repo.language}</small>
+          {repo.language && (
+            <span className="badge bg-success"> {repo.language}</span>
+          )}
         </a>
       )
     );
@@ -63,7 +67,11 @@ const ResultCardDetails = ({ user, repos }: UserCardProps) => {
       {DescriptionItems}
       {RepositoryItems.length > 0 ? (
         <div className="py-2">
-          <h3>Projects</h3>
+          <h3>
+            {showTranslation(
+              TranslationKeys.LayoutResultCardBodySectionNameProjects
+            )}
+          </h3>
           {RepositoryItems}
         </div>
       ) : null}

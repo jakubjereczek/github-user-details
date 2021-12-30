@@ -1,0 +1,11 @@
+{
+  "layout.footer.created_by": "Created by {{author}}",
+  "layout.search_bar.search_input_label": "Github user account name",
+  "layout.search_bar.search_input_placeholder": "Enter the user github account name",
+  "layout.result_card.title": "User profile details",
+  "layout.result_card.body.followers": "followers: {{followers}}",
+  "layout.result_card.body.following": "following: {{following}}",
+  "layout.result_card.button": "Show account",
+  "layout.result_card.body.section_name.projects": "Projects & Forks repos",
+  "layout.result_card.fetch_error": "An error occurred. User probably does not exist."
+}

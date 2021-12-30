@@ -1,0 +1,11 @@
+{
+  "layout.footer.created_by": "Aplikacja stworzona przez {{author}}",
+  "layout.search_bar.search_input_label": "Sprawdz Github uzytkownika",
+  "layout.search_bar.search_input_placeholder": "Wpisz nazwę konta użytkownika Github",
+  "layout.result_card.title": "Informacje o koncie użytkownika",
+  "layout.result_card.body.followers": "obserwuje: {{followers}}",
+  "layout.result_card.body.following": "obserwujących: {{following}}",
+  "layout.result_card.button": "Wyświetl konto",
+  "layout.result_card.body.section_name.projects": "Projekty & Forkowane repozytoria",
+  "layout.result_card.fetch_error": "Wystąpił bląd. Prawdopodobnie użytkownik nie istnieję."
+}

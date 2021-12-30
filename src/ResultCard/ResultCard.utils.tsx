@@ -11,10 +11,12 @@ import { DescriptionKeysList } from "./components/ResultCardDetails";
 export const sortRepositoriesByCreatedAt = (repos: Repository[]) => {
   const sortedRepos: Repository[] = repos.sort(
     (rep1, rep2) =>
-      new Date(rep2.created_at).getTime() - new Date(rep1.created_at).getTime()
+      asDate(rep2.created_at).getTime() - asDate(rep1.created_at).getTime()
   );
   return sortedRepos;
 };
+
+const asDate = (dateString: string) => new Date(dateString);
 
 export const getUserPropertyIcon = (key: DescriptionKeysList): JSX.Element => {
   switch (key) {
