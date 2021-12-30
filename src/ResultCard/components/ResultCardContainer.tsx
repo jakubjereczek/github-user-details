@@ -1,6 +1,6 @@
 import { openWindow } from "src/common/helpers";
 import { Repository, User } from "src/common/types";
-import ResultCardDetails from "./ResultCardDetails";
+import ResultCardDetails from "src/ResultCard/components/ResultCardDetails";
 import { showTranslation } from "src/common/helpers";
 import { TranslationKeys } from "src/i18n";
 

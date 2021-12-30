@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 import { getConfig } from "src/common/helpers";
-import SearchBar from "./components/SearchBar";
 import { showTranslation } from "src/common/helpers";
 import { TranslationKeys } from "src/i18n";
-import LanguageSwitch from "./components/LanguageSwitch";
+import LanguageSwitch from "src/Layout/components/LanguageSwitch";
+import SearchBar from "src/Layout/components/SearchBar";
 
 interface LayoutProps {
   children: ReactNode;

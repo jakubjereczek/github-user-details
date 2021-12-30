@@ -1,0 +1,12 @@
+{
+  "layout.footer.created_by": "Erstellt von {{author}}",
+  "layout.search_bar.search_input_label": "Name des Github-Benutzerkontos",
+  "layout.search_bar.search_input_placeholder": "Geben Sie den Github-Kontonamen des Benutzers ein",
+  "layout.result_card.title": "Benutzerprofildetails",
+  "layout.result_card.body.followers": "anhänger: {{followers}}",
+  "layout.result_card.body.following": "folgendes: {{following}}",
+  "layout.result_card.button": "Benutzerkonto anzeigen ",
+  "layout.result_card.body.section_name.projects": "Projekte & Forks-Repositorys",
+  "layout.result_card.fetch_error": "Bei der GITHUB API ist ein Fehler aufgetreten",
+  "layout.result_card.fetch_error_user_not_found": "Fehler aufgetreten. Wahrscheinlich existiert der Benutzer nicht"
+}

@@ -7,5 +7,6 @@
   "layout.result_card.body.following": "obserwujących: {{following}}",
   "layout.result_card.button": "Wyświetl konto",
   "layout.result_card.body.section_name.projects": "Projekty & Forkowane repozytoria",
-  "layout.result_card.fetch_error": "Wystąpił bląd. Prawdopodobnie użytkownik nie istnieję."
+  "layout.result_card.fetch_error": "Wystąpił bląd z GITHUB API",
+  "layout.result_card.fetch_error_user_not_found": "Wystąpił bląd. Prawdopodobnie użytkownik nie istnieję"
 }

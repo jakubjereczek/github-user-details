@@ -5,6 +5,7 @@ import { initReactI18next } from "react-i18next";
 
 import translationEN from "src/assets/locales/en.json";
 import translationPL from "src/assets/locales/pl.json";
+import translationDE from "src/assets/locales/de.json";
 
 export enum TranslationKeys {
   LayoutFooterCreatedby = "layout.footer.created_by",
@@ -16,14 +17,18 @@ export enum TranslationKeys {
   LayoutResultCardButton = "layout.result_card.button",
   LayoutResultCardBodySectionNameProjects = "layout.result_card.body.section_name.projects",
   LayoutResultCardFetchError = "layout.result_card.fetch_error",
+  LayoutResultCardFetchErrorUserNotFound = "layout.result_card.fetch_error_user_not_found",
 }
 
 export const LANGUAGES = [
   {
+    key: "pl",
+  },
+  {
     key: "en",
   },
   {
-    key: "pl",
+    key: "de",
   },
 ];
 
@@ -33,6 +38,9 @@ const resources = {
   },
   pl: {
     translation: translationPL,
+  },
+  de: {
+    translation: translationDE,
   },
 };
 

@@ -2,8 +2,8 @@ import { RouteComponentProps } from "@reach/router";
 import useFetchGithubProfile, {
   FetchStatus,
 } from "src/common/hooks/useFetchGithubProfile";
-import ResultCardContainer from "./components/ResultCardContainer";
-import ResultCardLoadingIndicator from "./components/ResultCardLoadingIndicator";
+import ResultCardContainer from "src/ResultCard/components/ResultCardContainer";
+import ResultCardLoadingIndicator from "src/ResultCard/components/ResultCardLoadingIndicator";
 
 interface ResultCardProps extends RouteComponentProps {
   userName?: string;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { fetchRepos, fetchUser } from "src/ResultCard/ResultCard.api";
-import { ErrorResponse, Repository, User } from "../types";
+import { ErrorResponse, Repository, User } from "src/common/types";
 
 export enum FetchStatus {
   Idle = "idle",
@@ -42,7 +42,7 @@ const useFetchGithubProfile = (userName: string | null) => {
         setFetchState(FetchStatus.Failed);
         setError({
           message: err.message,
-          code: err.code,
+          code: err.code || 404,
         });
       });
   }, [userName]);

@@ -1,11 +1,11 @@
 import Layout from "src/Layout/Layout";
-import Api from "./api/Api";
+import Api from "src/api/Api";
 import { Router, LocationProvider } from "@reach/router";
 import { history } from "src/common/history";
-import ResultCard from "./ResultCard/ResultCard";
+import ResultCard from "src/ResultCard/ResultCard";
 import { IconContext } from "react-icons";
-import "./i18n";
-import { initI18next } from "./i18n";
+import "src/i18n";
+import { initI18next } from "src/i18n";
 
 const App = () => {
   const init = () => {

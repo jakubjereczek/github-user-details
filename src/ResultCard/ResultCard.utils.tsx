@@ -6,8 +6,9 @@ import {
   FaRocketchat,
   FaRegStar,
 } from "react-icons/fa";
-import { DescriptionKeysList } from "./components/ResultCardDetails";
-import { asDate } from "src/common/helpers";
+import { DescriptionKeysList } from "src/ResultCard/components/ResultCardDetails";
+import { asDate, showTranslation } from "src/common/helpers";
+import { TranslationKeys } from "src/i18n";
 
 export const sortRepositoriesByCreatedAt = (repos: Repository[]) => {
   const sortedRepos: Repository[] = repos.sort(
@@ -29,4 +30,18 @@ export const getUserPropertyIcon = (key: DescriptionKeysList): JSX.Element => {
       return <FaRocketchat />;
   }
   return <FaRegStar />;
+};
+
+export const handleErrorByErrorCode = (code: number) => {
+  let translationKey;
+
+  switch (code) {
+    case 404:
+      translationKey = TranslationKeys.LayoutResultCardFetchErrorUserNotFound;
+      break;
+    default:
+      translationKey = TranslationKeys.LayoutResultCardFetchError;
+      break;
+  }
+  return showTranslation(translationKey);
 };

@@ -1,8 +1,8 @@
 import {
   getUserPropertyIcon,
   sortRepositoriesByCreatedAt,
-} from "../ResultCard.utils";
-import { UserCardProps } from "./ResultCardContainer";
+} from "src/ResultCard/ResultCard.utils";
+import { UserCardProps } from "src/ResultCard/components/ResultCardContainer";
 import { User } from "src/common/types";
 import { asDate, showTranslation } from "src/common/helpers";
 import { TranslationKeys } from "src/i18n";

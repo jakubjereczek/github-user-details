@@ -7,5 +7,6 @@
   "layout.result_card.body.following": "following: {{following}}",
   "layout.result_card.button": "Show account",
   "layout.result_card.body.section_name.projects": "Projects & Forks repos",
-  "layout.result_card.fetch_error": "An error occurred. User probably does not exist."
+  "layout.result_card.fetch_error": "An error occurred with GITHUB API",
+  "layout.result_card.fetch_error_user_not_found": "Error occured. Probably the user does not exist"
 }
